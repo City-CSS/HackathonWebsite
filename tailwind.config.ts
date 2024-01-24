@@ -1,7 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-	content: ["./src/**/*.{html,js}"],
-	theme: {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
 		colors: {
 			'text': '#15090e',
 			'background': '#fefbfc',
@@ -27,6 +32,7 @@ module.exports = {
 			normal: '400',
 			bold: '700'
 		}
-	},
-	plugins: []
-}
+  },
+  plugins: [],
+};
+export default config;
