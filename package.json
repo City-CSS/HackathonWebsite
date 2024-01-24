@@ -1,0 +1,11 @@
+{
+  "name": "hackathonwebsite24",
+  "version": "1.0.0",
+  "main": "jquery.js",
+  "scripts": {
+    "start": "npx tailwindcss -i ./src/main.css -o ./src/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
