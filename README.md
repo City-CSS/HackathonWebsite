@@ -9,7 +9,7 @@
 ## Stack
 **Frontend**<br>
 - Tailwind CSS
-- Node.js
+- Next.js
 
 **Backend**<br>
 TBD (Probably Node.js)
