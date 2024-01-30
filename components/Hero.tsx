@@ -44,6 +44,7 @@ const Hero = () => {
 
 	return (
 		<section className="sm:mb-32 w-full mb-8 flex flex-col relative" id="hero" aria-label="hero">
+
 			<div className="container 2xl:max-w-[1280px] w-full mx-auto max-xl:px-6 flex justify-center items-center flex-col lg:min-h-[800px] min-h-[600px] relative z-10">
 				<div style={{ opacity: 1, transform: 'none' }} className="relative z-10">
 					<div className="flex justify-center items-center gap-2 md:gap-8">
