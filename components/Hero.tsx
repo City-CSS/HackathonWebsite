@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Shape1 from '../Assets/hero/Clay_Black0003.png';
@@ -53,7 +55,7 @@ const Hero = () => {
 				</div>
 				<div className="flex justify-center items-center flex-col pt-2 relative z-10">
 					<h1 className="text-gray-700 text-8xl mt-4 text-center" style={{ opacity: 1, transform: 'none' }}>City Hackathon</h1>
-					<h1 className=" text-gray-700 text-white text-xl text-center" style={{ opacity: 1, transform: 'none' }}>2024</h1>
+					<h1 className=" text-gray-700  text-xl text-center" style={{ opacity: 1, transform: 'none' }}>2024</h1>
 				</div>
 				<div className="z-0 absolute top--15 left-0">
 					<Image src={Shape1} alt="hello" />

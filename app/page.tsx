@@ -4,6 +4,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Features2 from "@/components/Features2";
+import Stats from "@/components/Stats";
+import Sponsors from "@/components/Sponsors";
 
 
 export default function Home() {
@@ -12,7 +15,10 @@ export default function Home() {
 			<Header/>
 			<main className="flex-grow p-8">
 				<Hero/>
-				<Features/>
+				<hr className="my-8 border-t border-gray-400" />
+				<Sponsors/>
+				<Features2/>
+				<Stats/>
 			</main>
 			<Footer/>
 		</div>
