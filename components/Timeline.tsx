@@ -27,7 +27,7 @@ export default function TimelineWithIcon() {
 						<h1  color="gray" className="font-normal text-gray-600">
 							The key to more success is to have a lot of pillows. Put it this way, it took me
 							twenty five years to get these plants, twenty five years of blood sweat and tears, and
-							I'm never giving up, I'm just getting started. I'm up to something. Fan luv.
+							Im never giving up, Im just getting started. Im up to something. Fan luv.
 						</h1>
 					</TimelineBody>
 				</TimelineItem>
@@ -45,7 +45,7 @@ export default function TimelineWithIcon() {
 						<h1   color="gray" className="font-normal text-gray-600">
 							The key to more success is to have a lot of pillows. Put it this way, it took me
 							twenty five years to get these plants, twenty five years of blood sweat and tears, and
-							I'm never giving up, I'm just getting started. I'm up to something. Fan luv.
+							Im never giving up, Im just getting started. Im up to something. Fan luv.
 						</h1>
 					</TimelineBody>
 				</TimelineItem>
@@ -63,7 +63,7 @@ export default function TimelineWithIcon() {
 						<h1  color="gray" className="font-normal text-gray-600">
 							The key to more success is to have a lot of pillows. Put it this way, it took me
 							twenty five years to get these plants, twenty five years of blood sweat and tears, and
-							I'm never giving up, I'm just getting started. I'm up to something. Fan luv.
+							Im never giving up, Im just getting started. Im up to something. Fan luv.
 						</h1>
 					</TimelineBody>
 				</TimelineItem>
