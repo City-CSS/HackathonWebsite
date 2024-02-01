@@ -7,6 +7,7 @@ import Features from "@/components/Features";
 import Features2 from "@/components/Features2";
 import Stats from "@/components/Stats";
 import Sponsors from "@/components/Sponsors";
+import Timeline from "@/components/Timeline";
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
 				<Sponsors/>
 				<Features2/>
 				<Stats/>
+
 			</main>
 			<Footer/>
 		</div>

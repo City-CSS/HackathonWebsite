@@ -34,7 +34,7 @@ const team = [
 
 export default function Home() {
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="min-h-screen flex flex-col bg-gradient-to-r from-[#F2F2F2] to-[#DBDBDB]">
 			<Header />
 			<main className="flex-grow p-8">
 				<div className="mx-auto max-w-4xl mt-16">

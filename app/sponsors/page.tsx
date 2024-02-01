@@ -2,18 +2,19 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Testimonial from "@/components/Testimonial";
+import Sponsors from "@/components/Sponsors";
+import Contact from "@/components/Contact";
+
 
 export default function Home() {
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="min-h-screen flex flex-col  bg-gradient-to-r from-[#F2F2F2] to-[#DBDBDB]">
 			<Header/>
 			<main className="flex-grow p-8">
-				<div className="text-center">
-					<h2 className="text-3xl font-semibold mb-4">Sponsors</h2>
-					<p className="text-gray-600">
-						The city hackathon team
-					</p>
-				</div>
+				<Testimonial/>
+				<Sponsors/>
+				<Contact/>
 			</main>
 			<Footer/>
 		</div>
