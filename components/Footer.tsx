@@ -14,10 +14,9 @@ export default function Footer() {
 					<Link href="/policy.pdf">Privacy Policy</Link>
 				</p>
 
-				{/*TODO: Add social media links*/}
 				<span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-						<Link href="" className="px-1"><Instagram/></Link>
-						<Link href="" className="px-1"><Tiktok/></Link>
+						<Link href="https://www.instagram.com/citython24/" className="px-1"><Instagram/></Link>
+						<Link href="https://www.tiktok.com/@citython_24" className="px-1"><Tiktok/></Link>
 						<Link href="https://www.linkedin.com/company/100610705/feed/posts/" className="px-1"><Linkedin/></Link>
 	        </span>
 			</div>
