@@ -6,14 +6,6 @@
 - Showcase our Timetable, Speakers and event details.
 - Showcase our Team running the event.
 
-## Stack
-**Frontend**<br>
-- Tailwind CSS
-- Next.js
-
-**Backend**<br>
-TBD (Probably Node.js)
-
 ## Layout
 ### Landing Page
 - Main page / landing page
@@ -69,17 +61,9 @@ Have a tailored website for sponsors, with all the information they need to know
   - A form for sponsors to fill out, with their details and what they want to sponsor.
 - Footer
 
-## GDPR
-Make sure GDPR is followed, and that we have a privacy policy or something similar.<br>
-If we do decide to sell tickets or have a wait list, that there is some form of acceptance of the privacy policy.
-
 # Potential inspiration
 [Royal Hackaway](https://www.royalhackaway.com/)<br>
 [Hack the Burgh](https://hacktheburgh.com/)<br>
 [Hack the North](https://hackthenorth.com/)<br>
 [Hack the 6ix](https://hackthe6ix.com/)<br>
 [DevPost](https://kyroz.devpost.com/?ref_feature=challenge&ref_medium=similar-hackathons) (More for making posts about Hackathons, but still has some interesting things)
-
-# Deployment
-I own a Raspberry Pi 4, Raspberry Pi 5 and a home lab server.<br>
-Ideally, I will host it on one of those options using Nginx as the webserver.
