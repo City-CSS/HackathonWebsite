@@ -1,4 +1,5 @@
-import React, {ReactElement} from "react";
+import React from "react";
+import {AccordionProps, AccordionHeaderProps} from "@material-tailwind/react";
 import {
 	Accordion as RawAccordion,
 	AccordionBody,
@@ -6,17 +7,13 @@ import {
 } from "@material-tailwind/react";
 
 
-const Accordion = RawAccordion as unknown as (props: {
-	children: ReactElement[],
-	open: boolean,
-	className: string
-}) => ReactElement;
+const Accordion = RawAccordion as unknown as React.FC<AccordionProps>;
+const AccordionHeader = RawAccordionHeader as unknown as React.FC<AccordionHeaderProps>;
 
-const AccordionHeader = RawAccordionHeader as unknown as (props: {
-	children: string,
-	onClick: () => void,
-	className: string
-}) => ReactElement;
+const CUSTOM_ANIMATION = {
+	mount: {scale: 1, y: 0},
+	unmount: {scale: 1, y: -80}
+};
 
 const FAQ_DATA = [
 	{
@@ -70,10 +67,13 @@ export default function FAQ() {
 	const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
 	return (
-		<div className="py-24 sm:py-32">
+		<div className="top-16">
+			<div className="mx-auto max-w-2xl py-8 text-center">
+				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Frequently Asked Questions</h2>
+			</div>
 			<div className="mx-auto max-w-7xl px-2 lg:px-8">
 				{FAQ_DATA.map((faq, index) => (
-					<Accordion key={index} open={open === index + 1} className="mb-2 rounded-lg border border-blue-gray-100 px-4">
+					<Accordion key={index} open={open === index + 1} className="mb-2 rounded-lg border border-blue-gray-100 px-4" animate={CUSTOM_ANIMATION}>
 						<AccordionHeader
 							onClick={() => handleOpen(index + 1)}
 							className={`border-b-0 py-2 ${
