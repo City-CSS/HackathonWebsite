@@ -1,3 +1,4 @@
+import CenteringGrid from "@/components/CenteringGrid"
 import {Button} from "@material-tailwind/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -5,7 +6,7 @@ import React from "react"
 
 
 export default function Sponsors() {
-	const gridCols = 4;
+	const gridCols = 6;
 
 	enum SponsorType {
 		Platinum = 'Platinum',
@@ -76,40 +77,20 @@ export default function Sponsors() {
 					Sponsored By:
 				</h2>
 				{sponsors.length > 0 ? (
-					<div className={`flex flex-wrap justify-between py-6`}>
-						{sponsors.map((sponsor, index) => {
-							const isLastRow = index >= sponsors.length - numOfItemsInLastRow;
-							let widthClass = `w-1/${gridCols}`;
-							if (isLastRow) {
-								switch (numOfItemsInLastRow) {
-									case 1:
-										widthClass = "w-full";
-										break;
-									case 2:
-										widthClass = "w-1/2";
-										break;
-									case 3:
-										widthClass = "w-1/3";
-										break;
-									default:
-										break;
-								}
-							}
-
-							return (
-								<div className={widthClass + " px-2 py-2 flex justify-center items-center"}>
-									<Link href={sponsor.link} key={index}>
-										<Image
-											src={sponsor.image}
-											alt={sponsor.name + " logo"}
-											width={158}
-											height={48}
-										/>
-									</Link>
-								</div>
-							);
-						})}
-					</div>
+					<CenteringGrid colSize={4} iterator={sponsors}>
+						{(sponsor, index, widthClass) => (
+							<div className={widthClass + " px-2 py-2 flex justify-center items-center"}>
+								<Link href={sponsor.link} key={index}>
+									<Image
+										src={sponsor.image}
+										alt={sponsor.name + " logo"}
+										width={158}
+										height={48}
+									/>
+								</Link>
+							</div>
+						)}
+					</CenteringGrid>
 				) : (
 					<div>
 						<p className="text-center text-gray-600 py-6">No sponsors yet!<br/>Do you want to be the first?</p>
