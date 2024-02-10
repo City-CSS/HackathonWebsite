@@ -6,8 +6,6 @@ import React from "react"
 
 
 export default function Sponsors() {
-	const gridCols = 6;
-
 	enum SponsorType {
 		Platinum = 'Platinum',
 		Gold = 'Gold',
@@ -68,8 +66,6 @@ export default function Sponsors() {
 		}
 	]
 
-	const numOfItemsInLastRow = sponsors.length % gridCols;
-
 	return (
 		<div className=" py-24 sm:py-32">
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -79,16 +75,14 @@ export default function Sponsors() {
 				{sponsors.length > 0 ? (
 					<CenteringGrid colSize={4} iterator={sponsors}>
 						{(sponsor, index, widthClass) => (
-							<div className={widthClass + " px-2 py-2 flex justify-center items-center"}>
-								<Link href={sponsor.link} key={index}>
-									<Image
-										src={sponsor.image}
-										alt={sponsor.name + " logo"}
-										width={158}
-										height={48}
-									/>
-								</Link>
-							</div>
+							<Link href={sponsor.link} key={index} className={widthClass + " px-2 py-2 flex justify-center items-center"}>
+								<Image
+									src={sponsor.image}
+									alt={sponsor.name + " logo"}
+									width={158}
+									height={48}
+								/>
+							</Link>
 						)}
 					</CenteringGrid>
 				) : (
