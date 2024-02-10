@@ -79,7 +79,7 @@ export default function Sponsors() {
 					<div className={`flex flex-wrap justify-between py-6`}>
 						{sponsors.map((sponsor, index) => {
 							const isLastRow = index >= sponsors.length - numOfItemsInLastRow;
-							let widthClass = "w-1/4";
+							let widthClass = `w-1/${gridCols}`;
 							if (isLastRow) {
 								switch (numOfItemsInLastRow) {
 									case 1:
