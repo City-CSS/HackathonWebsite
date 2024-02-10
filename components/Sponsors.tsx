@@ -7,11 +7,11 @@ import React from "react"
 
 export default function Sponsors() {
 	enum SponsorType {
-		Platinum = 'Platinum',
-		Gold = 'Gold',
-		Silver = 'Silver',
-		Bronze = 'Bronze',
-		Supporter = 'Supporter'
+		PLATINUM = 'Platinum',
+		GOLD = 'Gold',
+		SILVER = 'Silver',
+		BRONZE = 'Bronze',
+		SUPPORTER = 'Supporter'
 	}
 
 	interface Sponsor {
