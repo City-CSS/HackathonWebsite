@@ -1,7 +1,7 @@
 import {supabase} from "@/app/api/supabaseClient"
 import CenteringGrid from "@/components/CenteringGrid"
 import TEMP_SponsorButton from "@/components/TEMP_SponsorButton"
-import {Button} from "@material-tailwind/react"
+// import {Button} from "@material-tailwind/react"
 import {Error} from "@/components/InfoMessages"
 import Image from "next/image"
 import Link from "next/link"
