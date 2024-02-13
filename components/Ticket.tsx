@@ -38,11 +38,11 @@ export default function Ticket() {
 	const [selectedDisability, setSelectedDisability] = React.useState("")
 
 	const steps = [
-		<Step1/>,
-		<Step2/>,
-		<Step3 setSelectedPreference={setSelectedPreference} setSelectedAllergy={setSelectedAllergy} setSelectedDisability={setSelectedDisability} selectedAllergy={selectedAllergy}/>,
-		<Step4/>
-	]
+		<Step1 key={0}/>,
+		<Step2 key={1}/>,
+		<Step3 key={2} setSelectedPreference={setSelectedPreference} setSelectedAllergy={setSelectedAllergy} setSelectedDisability={setSelectedDisability} selectedAllergy={selectedAllergy}/>,
+		<Step4 key={3}/>
+	];
 
 	const validateStep1 = () => {
 		const firstNameInput = document.getElementById("firstNameInput")
