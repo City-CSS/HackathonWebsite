@@ -48,23 +48,22 @@ export default function Question() {
 
 		if (isEmailValid && isContentValid && isPrivacyPolicyAgreed) {
 			try {
-				const { data, error } = await supabase
-					.from('Questions')
+				const {error} = await supabase
+					.from("Questions")
 					.insert({
-						email: emailInput.value,
-						question: contentInput.value,
+						email : emailInput.value, question : contentInput.value
 					});
 
 				if (error) {
-					setError('An error occurred. Please try again later.')
+					setError("An error occurred. Please try again later.")
 				}
 
-				setError("");
-				setSuccess(true);
+				setError("")
+				setSuccess(true)
 
-				setTimeout(handleOpen, 3000);
+				setTimeout(handleOpen, 3000)
 			} catch (error) {
-				setError('An error occurred. Please try again later.');
+				setError("An error occurred. Please try again later.")
 			}
 		}
 	}

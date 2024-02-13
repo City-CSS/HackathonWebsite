@@ -13,7 +13,7 @@ export default function Waitlist() {
 	const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 	const handleSend = async () => {
-		const emailInput = document.getElementById("emailInput") as HTMLInputElement; // Include type assertion
+		const emailInput = document.getElementById("emailInput") as HTMLInputElement;
 		const isEmailValid = emailRegex.test(email.trim());
 
 		emailInput.classList.toggle("outline-1", !isEmailValid);
@@ -25,21 +25,21 @@ export default function Waitlist() {
 			setError("");
 
 			try {
-				const { data, error } = await supabase
-					.from('Waitlist')
-					.insert({ email })
-					.single();
-				if (error && error.code === '23505') {
-					setError("You're already on the waitlist!");
+				const {error} = await supabase
+					.from("Waitlist")
+					.insert({email})
+					.single()
+				if (error && error.code === "23505") {
+					setError("You're already on the waitlist!")
 				} else if (error) {
-					setError('An error occurred. Please try again later.');
+					setError("An error occurred. Please try again later.")
 				} else {
-					setSent(true);
+					setSent(true)
 				}
 			} catch (error) {
-				setError('An unexpected error occurred. Please try again later.');
+				setError("An unexpected error occurred. Please try again later.")
 			} finally {
-				setSending(false);
+				setSending(false)
 			}
 		}
 	};

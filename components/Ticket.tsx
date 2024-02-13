@@ -14,7 +14,7 @@ import {
 	Radio,
 	Select,
 	Step,
-	Stepper, ThemeProvider,
+	Stepper,
 	Typography
 } from "@material-tailwind/react"
 import Link from "next/link"
