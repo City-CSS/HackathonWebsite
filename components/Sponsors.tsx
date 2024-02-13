@@ -55,7 +55,7 @@ export default function Sponsors() {
 		};
 
 		fetchSponsors();
-	}, []);
+	}, [SponsorType]);
 
 	return (
 		<div className="mx-auto bg-secondary-50 text-text-950 py-24 sm:py-32 px-4 lg:px-12 max-w-full">
