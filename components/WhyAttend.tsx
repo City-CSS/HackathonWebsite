@@ -48,7 +48,7 @@ const features = [
 	}
 ]
 
-export default function  () {
+export default function WhyAttend() {
 	return (
 		<div className="pt-8 sm:pt-12">
 			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 pb-12 px-12 max-w-2xl">Why Attend?</h2>
