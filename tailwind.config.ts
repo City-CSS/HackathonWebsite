@@ -1,12 +1,12 @@
 import type {Config} from "tailwindcss"
+import withMT from '@material-tailwind/react/utils/withMT';
 
-const config = {
+const config = withMT({
 	darkMode: ["class"],
 	content: [
 		'./pages/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./app/**/*.{ts,tsx}',
-		'./src/**/*.{ts,tsx}'
+		"./components/**/*.{js,ts,jsx,tsx}",
+		"./app/**/*.{js,ts,jsx,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -124,6 +124,6 @@ const config = {
 		},
 	},
 	plugins: [require("tailwindcss-animate"), require("@tailwindcss/forms")]
-} satisfies Config
+});
 
 export default config

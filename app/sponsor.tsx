@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen flex flex-col  bg-gradient-to-r from-[#F2F2F2] to-[#DBDBDB]">
+		<div className="min-h-screen flex flex-col bg-gradient-to-r from-[#F2F2F2] to-[#DBDBDB]">
 			<Header/>
 			<main className="flex-grow p-8">
 				<Testimonial/>

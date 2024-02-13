@@ -1,31 +1,28 @@
-'use client'
+"use client"
 
 import React from "react";
-import Header from "@/components/Header";
+// import Team from "@/components/Team"
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Features2 from "@/components/Features2";
-import Stats from "@/components/Stats";
+import TitlePage from "@/components/TitlePage";
+import WhyAttend from "@/components/WhyAttend";
 import Sponsors from "@/components/Sponsors";
-import Timeline from "@/components/Timeline";
+// import Timetable from "@/components/Timetable";
 import FAQ from "@/components/FAQ";
 
 
 export default function Home() {
 	return (
-		<div className="min-h-screen flex flex-col  bg-gradient-to-r from-[#F2F2F2] to-[#DBDBDB]">
-			<Header/>
-			<main className="flex-grow p-8">
-				<Hero/>
-				<hr className="my-8 border-t border-gray-400" />
-				<FAQ/>
+		<div className="min-h-screen flex flex-col bg-background-950 text-text-50 select-none">
+			<main className="flex-grow pattern">
+				<TitlePage/>
 				<Sponsors/>
-				<Features2/>
-				<Stats/>
-
+				{/*<AboutUs/>*/}
+				<WhyAttend/>
+				{/*<Timetable/>*/}
+				{/*<Team/>*/}
+				<FAQ/>
+				<Footer/>
 			</main>
-			<Footer/>
 		</div>
 	)
 }

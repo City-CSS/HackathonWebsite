@@ -1,5 +1,8 @@
+import Question from "@/components/Question"
 import React from "react";
-import {AccordionProps, AccordionHeaderProps} from "@material-tailwind/react";
+import {
+	AccordionProps, AccordionHeaderProps, Button
+} from "@material-tailwind/react"
 import {
 	Accordion as RawAccordion,
 	AccordionBody,
@@ -67,26 +70,26 @@ export default function FAQ() {
 	const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
 	return (
-		<div className="top-16">
-			<div className="mx-auto max-w-2xl py-8 text-center">
-				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Frequently Asked Questions</h2>
-			</div>
-			<div className="mx-auto max-w-7xl px-2 lg:px-8">
+		<div className="pt-6 sm:pt-12">
+			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 pb-12 px-12 ">Frequently Asked Questions</h2>
+			<div className="mx-auto max-w-7xl px-4 lg:px-0">
+				{/*TODO: Implement skip FAQ for keyboard only users*/}
 				{FAQ_DATA.map((faq, index) => (
-					<Accordion key={index} open={open === index + 1} className="mb-2 rounded-lg border border-blue-gray-100 px-4" animate={CUSTOM_ANIMATION}>
+					<Accordion key={index} open={open === index + 1} className={`mb-2 sm:mb-4 rounded-lg px-4 ${open === index + 1 ? "bg-background-100": "bg-background-50"}`} animate={CUSTOM_ANIMATION}>
 						<AccordionHeader
 							onClick={() => handleOpen(index + 1)}
-							className={`border-b-0 py-2 ${
-								open === index + 1 ? "py-0 pt-2 text-blue-500 hover:!text-blue-700" : ""
+							className={`text-xl font-bold focus:outline-red-700 ${open === index + 1 ? "pb-1 pt-2 text-primary-600 hover:text-primary-500 focus:text-primary-500" : "py-2 text-primary-900 hover:text-primary-700 focus:text-primary-700"
 							}`}
 						>
 							{faq.question}
 						</AccordionHeader>
-						<AccordionBody className="pt-0 py-2 text-base font-normal">
+						<AccordionBody className="pt-1 pb-2 text-lg">
 							{faq.answer}
 						</AccordionBody>
 					</Accordion>
 				))}
+
+				<Question/>
 			</div>
 		</div>
 	);
