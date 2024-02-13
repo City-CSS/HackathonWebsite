@@ -1,7 +1,7 @@
 import Question from "@/components/Question"
 import React from "react";
 import {
-	AccordionProps, AccordionHeaderProps, Button
+	AccordionProps, AccordionHeaderProps
 } from "@material-tailwind/react"
 import {
 	Accordion as RawAccordion,

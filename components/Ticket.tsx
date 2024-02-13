@@ -20,7 +20,6 @@ import {
 import Link from "next/link"
 import React, {useState} from "react"
 import {Diagram3Fill, Grid1x2Fill, ListNested, PersonFill} from "react-bootstrap-icons"
-import value = ThemeProvider.propTypes.value
 
 
 const genericRegex = /[`'"<>;=]/
@@ -107,7 +106,6 @@ export default function Ticket() {
 
 	const validateStep2 = () => {
 		const teamInput0 = document.getElementById("teamInput#0")
-		const teamInput1 = document.getElementById("teamInput#1")
 		const teamNameInput = document.getElementById("teamNameInput")
 
 		// @ts-ignore
@@ -195,15 +193,15 @@ export default function Ticket() {
 	}
 
 	const sendToDatabase = () => {
-		// @ts-ignore
-		const firstName = document.getElementById("firstNameInput").value
-		// @ts-ignore
-		const familyName = document.getElementById("familyNameInput").value
-		// @ts-ignore
-		const email = document.getElementById("emailInput").value
-		// @ts-ignore
-		const university = document.getElementById("universityInput").value
-		// TODO: Continue the rest
+		// // @ts-ignore
+		// const firstName = document.getElementById("firstNameInput").value
+		// // @ts-ignore
+		// const familyName = document.getElementById("familyNameInput").value
+		// // @ts-ignore
+		// const email = document.getElementById("emailInput").value
+		// // @ts-ignore
+		// const university = document.getElementById("universityInput").value
+		// TODO: Implement
 	}
 
 	const handleNext = () => {

@@ -32,12 +32,12 @@ export default function Waitlist() {
 				if (error && error.code === '23505') {
 					setError("You're already on the waitlist!");
 				} else if (error) {
-					throw error;
+					setError('An error occurred. Please try again later.');
 				} else {
 					setSent(true);
 				}
 			} catch (error) {
-				setError('An error occurred. Please try again later.');
+				setError('An unexpected error occurred. Please try again later.');
 			} finally {
 				setSending(false);
 			}

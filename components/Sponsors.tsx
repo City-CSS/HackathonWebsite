@@ -27,42 +27,6 @@ export default function Sponsors() {
 		// 	link : "https://transistor.com",
 		// 	image : "https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg",
 		// 	type : SponsorType.PLATINUM
-		// },
-		// {
-		// 	name : "Reform",
-		// 	link : "https://reform.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg",
-		// 	type : SponsorType.GOLD
-		// },
-		// {
-		// 	name : "Tuple",
-		// 	link : "https://tuple.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg",
-		// 	type : SponsorType.SILVER
-		// },
-		// {
-		// 	name : "SavvyCal",
-		// 	link : "https://savvycal.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg",
-		// 	type : SponsorType.BRONZE
-		// },
-		// {
-		// 	name : "Statamic",
-		// 	link : "https://statamic.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg",
-		// 	type : SponsorType.SUPPORTER
-		// },
-		// {
-		// 	name : "Statamic",
-		// 	link : "https://statamic.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg",
-		// 	type : SponsorType.SUPPORTER
-		// },
-		// {
-		// 	name : "Statamic",
-		// 	link : "https://statamic.com",
-		// 	image : "https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg",
-		// 	type : SponsorType.SUPPORTER
 		// }
 	]
 
@@ -89,6 +53,7 @@ export default function Sponsors() {
 			)}
 
 			<div className="flex flex-wrap justify-center gap-4">
+				{/*TODO: Implement sponsor page*/}
 				<Link href="/sponsor" draggable="false">
 					<Button size="lg" className="bg-accent-500 hover:bg-accent-600 text-text-950 focus:outline-red-700 text-lg py-2 px-4">Sponsor Citython</Button>
 				</Link>

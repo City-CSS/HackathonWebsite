@@ -1,7 +1,6 @@
-import Ticket from "@/components/Ticket"
+// import Ticket from "@/components/Ticket"
 import Waitlist from "@/components/Waitlist"
 import React from 'react';
-import {Button} from "@material-tailwind/react"
 
 
 const TitlePage = () => {
