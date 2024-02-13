@@ -55,9 +55,13 @@ export default function Question() {
 						question: contentInput.value,
 					});
 
-				if (error) throw error;
+				if (error) {
+					setError('An error occurred. Please try again later.')
+				}
+
 				setError("");
 				setSuccess(true);
+
 				setTimeout(handleOpen, 3000);
 			} catch (error) {
 				setError('An error occurred. Please try again later.');
