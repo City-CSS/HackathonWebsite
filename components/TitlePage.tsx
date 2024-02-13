@@ -12,7 +12,7 @@ const TitlePage = () => {
 				</h1>
 
 				<p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-					City University's annual hackathon is back! Join us for a weekend of innovation, creativity, and fun on 2nd and 3rd of March!
+					City University&apos;s annual hackathon is back! Join us for a weekend of innovation, creativity, and fun on 2nd and 3rd of March!
 				</p>
 
 				<Waitlist/>
