@@ -61,33 +61,35 @@ export default function Sponsors() {
 		<div className="mx-auto bg-secondary-50 text-text-950 py-24 sm:py-32 px-4 lg:px-12 max-w-full">
 			<h2 className={`mx-auto text-3xl sm:text-4xl font-bold tracking-tight text-center px-12 max-w-2xl ${sponsors.length > 0? "pb-12" : ""}`}>Our Sponsors</h2>
 
-			{error !== "" ? (
-				<Error message={error}/>
-			) : (
-				<>
-					<CenteringGrid colSize={3} iterator={sponsors}>
-						{(sponsor, index, widthClass) => (
-							<Link href={sponsor.link} key={index} className={widthClass + " px-2 py-2 flex justify-center items-center"} draggable="false">
-								<Image
-									src={sponsor.image}
-									onError={(e) => {
-										(e.target as HTMLImageElement).src = '/ImageLoadError.svg';
-									}}
-									alt={sponsor.name + " logo"}
-									width={158}
-									height={48}
-								/>
-							</Link>
-						)}
-					</CenteringGrid>
+			<div className="mx-auto max-w-2xl lg:max-w-4xl px-6">
+				{error !== "" ? (
+					<Error message={error}/>
+				) : (
+					<>
+						<CenteringGrid colSize={3} iterator={sponsors}>
+							{(sponsor, index, widthClass) => (
+								<Link href={sponsor.link} key={index} className={widthClass + " px-2 py-2 flex justify-center items-center"} draggable="false">
+									<Image
+										src={sponsor.image}
+										onError={(e) => {
+											(e.target as HTMLImageElement).src = '/ImageLoadError.svg';
+										}}
+										alt={sponsor.name + " logo"}
+										width={158}
+										height={48}
+									/>
+								</Link>
+							)}
+						</CenteringGrid>
 
-					{sponsors.length > 0 ? (
-						<p className="text-center text-lg pt-12 pb-4">Want to sponsor? 😀</p>
-					) : (
-						<p className="text-center text-lg pb-4">No sponsors yet. 😔<br/>Do you want to be the first?</p>
-					)}
-				</>
-			)}
+						{sponsors.length > 0 ? (
+							<p className="text-center text-lg pt-12">Want to sponsor? 😀</p>
+						) : (
+							<p className="text-center text-lg pb-4">No sponsors yet. 😔<br/>Do you want to be the first?</p>
+						)}
+					</>
+				)}
+			</div>
 
 			<div className="flex flex-wrap justify-center gap-4">
 				<TEMP_SponsorButton/>
