@@ -83,7 +83,7 @@ export default function Sponsors() {
 						</CenteringGrid>
 
 						{sponsors.length > 0 ? (
-							<p className="text-center text-lg pt-12">Want to sponsor? 😀</p>
+							<p className="text-center text-lg pt-12">Interested in sponsoring us? 😀</p>
 						) : (
 							<p className="text-center text-lg pb-4">No sponsors yet. 😔<br/>Do you want to be the first?</p>
 						)}
