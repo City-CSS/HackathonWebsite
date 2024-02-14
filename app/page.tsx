@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import AboutUs from "@/components/AboutUs"
 // import Team from "@/components/Team"
 import Footer from "@/components/Footer";
 import TitlePage from "@/components/TitlePage";
@@ -16,7 +17,7 @@ export default function Home() {
 			<main className="flex-grow pattern">
 				<TitlePage/>
 				<Sponsors/>
-				{/*<AboutUs/>*/}
+				<AboutUs/>
 				<WhyAttend/>
 				{/*<Timetable/>*/}
 				{/*<Team/>*/}
