@@ -1,6 +1,7 @@
+import React from 'react';
 // import Ticket from "@/components/Ticket"
 import Waitlist from "@/components/Waitlist"
-import React from 'react';
+import {CalendarFill, GeoAltFill} from "react-bootstrap-icons"
 
 
 const TitlePage = () => {
@@ -11,9 +12,20 @@ const TitlePage = () => {
 					Citython<br/>2024
 				</h1>
 
-				<p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-					City University&apos;s annual hackathon is back! Join us for a weekend of innovation, creativity, and fun on 2nd and 3rd of March!
-				</p>
+				<h2 className="mx-auto text-accent-100 mt-4 max-w-xl sm:text-xl/relaxed">
+					City University&apos;s annual hackathon is back!
+				</h2>
+
+				<div className="grid grid-cols-2 gap-4 mt-16 text-xl font-bold">
+					<div className="inline-flex items-center">
+						<CalendarFill className="mr-2 text-primary-400 text-2xl"/>
+						<span className="font-bold">March 2nd & 3rd</span>
+					</div>
+					<div className="inline-flex items-center">
+						<GeoAltFill className="mr-2 text-primary-400 text-2xl"/>
+						<span className="font-bold">City University of London</span>
+					</div>
+				</div>
 
 				<Waitlist/>
 				{/*<Ticket/>*/}
