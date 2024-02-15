@@ -45,8 +45,12 @@ export default function Waitlist() {
 	};
 
 	return (
-		<div className="mt-8">
-			<h2 className="text-accent-200"><span className="font-bold text-accent-300">Tickets are not available yet.</span><br/>Join the waitlist to get notified when they are!</h2>
+		<div className="mt-16">
+			<h2 className="text-lg text-accent-200">
+				<span className="font-bold text-accent-400">Ticket sales have not started yet.</span>
+				<br/>
+				Sign up for our waitlist to receive notifications when they become available!
+			</h2>
 			<div className="mt-4 flex flex-wrap justify-center">
 				{error && <Error className="mb-6" message={error}/>}
 				<div className="relative flex w-full max-w-[24rem]">
@@ -58,9 +62,6 @@ export default function Waitlist() {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						className="pr-20 text-text-50"
-						containerProps={{
-							className: "min-w-0",
-						}}
 					/>
 					<Button onClick={handleSend} size="sm" color={email && sending ? "gray" : "blue-gray"} disabled={!email} className="!absolute right-1 top-1 rounded bg-primary-400 text-text-50 hover:bg-primary-500 focus:outline-red-700">
 						{sent ? "Joined!" : sending? <Spinner className="h-4 w-4"/> : "Join"}
