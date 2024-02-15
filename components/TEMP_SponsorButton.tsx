@@ -71,7 +71,7 @@ export default function TEMP_SponsorButton() {
 	return (
 		<div>
 			<div className="flex justify-center items-center pt-8 pb-12">
-				<Button onClick={handleOpen} size="lg" className=" bg-accent-500 hover:bg-accent-600 text-text-950 focus:outline-red-700 text-lg py-2 px-4">
+				<Button onClick={handleOpen} size="lg" className="bg-accent-500 hover:bg-accent-600 text-text-950 focus:outline-red-700 text-lg py-2 px-4">
 					Sponsor Citython
 				</Button>
 			</div>
