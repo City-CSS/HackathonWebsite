@@ -50,7 +50,7 @@ const features = [
 
 export default function WhyAttend() {
 	return (
-		<div className="pt-8 sm:pt-12">
+		<div className="pt-8 sm:pt-12 pb-4">
 			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 pb-12 px-12 max-w-2xl">Why Attend?</h2>
 			<div className="mx-auto max-w-2xl lg:max-w-4xl px-6">
 				<dl className="mx-auto grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
