@@ -1,16 +1,18 @@
 import React from "react"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import Link from "next/link"
 
 
 export default function AboutUs() {
 	return (
 		<div className="pt-6 sm:pt-12">
-			<h3 className="mx-auto text-2xl sm:3x; font-bold text-primary-100 tracking-tight text-center pt-8 px-12 ">Brought to you by...</h3>
-			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-primary-300 tracking-tight text-center px-12">Computer Science Society</h2>
-			<div className="pt-3">
+			<h2 className="mx-auto bg-gradient-to-r from-lime-300 via-red-500 to-purple-500 bg-clip-text text-3xl sm:text-4xl font-bold text-transparent leading-tight text-center pb-5">
+				<span className="text-2xl sm:3xl text-text-50">Brought to you by...</span><br/>
+				Computer Science Society
+			</h2>
+			<div className="mx-auto relative w-40 h-40">
 				<Link href="https://www.citystudents.co.uk/getinvolved/society/css/">
-					<Image src="/CSSLogo.svg" alt="CSS Logo" width={200} height={200} className="mx-auto"/>
+					<Image src="/CSSLogo.svg" alt="CSS Logo" fill={true} className="mx-auto"/>
 				</Link>
 			</div>
 			<div className="mx-auto text-lg text-center max-w-xl px-4 lg:px-0">
