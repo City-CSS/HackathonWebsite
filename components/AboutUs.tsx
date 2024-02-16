@@ -17,10 +17,10 @@ export default function AboutUs() {
 			</div>
 			<div className="mx-auto sm:text-lg text-center max-w-xl px-8 lg:px-0">
 				<p className="pt-8 sm:pt-12">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					The City University of London Computer Science Society is a vibrant community of students passionate about all things tech. We believe in the power of technology to inspire, innovate, and drive positive change. Whether you're a seasoned programmer, a curious beginner, or simply interested in the world of computing, there's a place for you in our society.
 				</p>
-				<p className="pt-3">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				<p className="pt-3 sm:pt-4">
+					We offer a wide range of events and activities to spark your interest and build your skills. Join us for hands-on workshops where you'll learn about cutting-edge technologies like AI, participate in lively tech discussions, network with fellow students at our socials, and get inspired at our industry events.  And of course, our highlight of the year is Citython 2024, a hackathon where you'll put your knowledge to the test and create amazing solutions.
 				</p>
 			</div>
 		</div>
