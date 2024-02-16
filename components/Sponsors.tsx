@@ -1,4 +1,4 @@
-import {supabase} from "@/app/api/supabaseClient"
+import supabase from "@/app/api/supabaseClient"
 import CenteringGrid from "@/components/CenteringGrid"
 import TEMP_SponsorButton from "@/components/TEMP_SponsorButton"
 // import {Button} from "@material-tailwind/react"
@@ -6,6 +6,7 @@ import {Error} from "@/components/InfoMessages"
 import Image from "next/image"
 import Link from "next/link"
 import React, {useEffect, useState} from "react"
+import {SupabaseClient} from "@supabase/supabase-js";
 
 
 export default function Sponsors() {
@@ -27,30 +28,42 @@ export default function Sponsors() {
 		type: SponsorType;
 	}
 
+	interface DatabaseRecord {
+		name: string;
+		url: string;
+		logo_uri: string;
+		tier: string;
+	}
+
 	const [sponsors, setSponsors] = useState<Sponsor[]>([]);
 
 	useEffect(() => {
 		const fetchSponsors = async () => {
 			try {
-				let { data: sponsors, error } = await supabase
-					.from('Sponsors')
-					.select('name, url, tier, logo_uri');
+				const insSupabase = supabase()
+				if (insSupabase != null) {
+					const {data: sponsors, error} = await (insSupabase as SupabaseClient)
+						.from('Sponsors')
+						.select('name, url, tier, logo_uri');
 
-				console.log(error)
-				if (error) {
-					setError("Unable to load sponsors! Please try again later.")
+					console.log(error)
+					if (error) {
+						setError("Unable to load sponsors! Please try again later.")
+					}
+
+					const transformedSponsors = sponsors != null
+						? sponsors.map((sponsor : DatabaseRecord) => ({
+							name: sponsor.name,
+							link: sponsor.url,
+							image: sponsor.logo_uri || "/ImageLoadError.svg",
+							type: SponsorType[sponsor.tier as keyof typeof SponsorType]
+						}))
+						: [{name: "", link: "", image: "", type: SponsorType.PLACEHOLDER}];
+
+					setSponsors(transformedSponsors);
+				} else {
+					setError("DB412: Failed Database Precondition!")
 				}
-
-				const transformedSponsors = sponsors
-					? sponsors.map((sponsor) => ({
-						name: sponsor.name,
-						link: sponsor.url,
-						image: sponsor.logo_uri || "",
-						type: SponsorType[sponsor.tier as keyof typeof SponsorType]
-					}))
-					: [{ name: "", link: "", image: "", type: SponsorType.PLACEHOLDER }];
-
-				setSponsors(transformedSponsors);
 			} catch (error) {}
 		};
 
@@ -71,9 +84,6 @@ export default function Sponsors() {
 								<Link href={sponsor.link} key={index} className={widthClass + " px-2 py-2 flex justify-center items-center"} draggable="false">
 									<Image
 										src={sponsor.image}
-										onError={(e) => {
-											(e.target as HTMLImageElement).src = '/ImageLoadError.svg';
-										}}
 										alt={sponsor.name + " logo"}
 										width={158}
 										height={48}

@@ -1,7 +1,8 @@
-import {supabase} from "@/app/api/supabaseClient"
+import supabase from "@/app/api/supabaseClient"
 import {Error} from "@/components/InfoMessages"
 import React from "react"
 import {Button, Input, Spinner} from "@material-tailwind/react"
+import {SupabaseClient} from "@supabase/supabase-js";
 
 
 export default function Waitlist() {
@@ -25,16 +26,23 @@ export default function Waitlist() {
 			setError("");
 
 			try {
-				const {error} = await supabase
-					.from("Waitlist")
-					.insert({email})
-					.single()
-				if (error && error.code === "23505") {
-					setError("You're already on the waitlist!")
-				} else if (error) {
-					setError("An error occurred. Please try again later.")
+				const insSupabase = supabase()
+
+				if (insSupabase != null) {
+					const {error} = await (insSupabase as SupabaseClient)
+						.from("Waitlist")
+						.insert({email})
+						.single()
+
+					if (error && error.code === "23505") {
+						setError("You're already on the waitlist!")
+					} else if (error) {
+						setError("An error occurred. Please try again later.")
+					} else {
+						setSent(true)
+					}
 				} else {
-					setSent(true)
+					setError("Supabase client is not initialized.")
 				}
 			} catch (error) {
 				setError("An unexpected error occurred. Please try again later.")

@@ -1,4 +1,4 @@
-import {supabase} from "@/app/api/supabaseClient"
+import supabase from "@/app/api/supabaseClient"
 import {Error, Success} from "@/components/InfoMessages"
 import Link from "next/link"
 import React from "react"
@@ -13,6 +13,7 @@ import {
 	Textarea,
 	Typography
 } from "@material-tailwind/react"
+import {SupabaseClient} from "@supabase/supabase-js";
 
 
 export default function TEMP_SponsorButton() {
@@ -48,20 +49,26 @@ export default function TEMP_SponsorButton() {
 
 		if (isEmailValid && isContentValid && isPrivacyPolicyAgreed) {
 			try {
-				const {error} = await supabase
-					.from("Questions")
-					.insert({
-						email : emailInput.value, question : "SE:\n" + contentInput.value
-					});
+				const insSupabase = supabase()
+				if (insSupabase != null) {
+					const {error} = await (insSupabase as SupabaseClient)
+						.from("Questions")
+						.insert({
+								email : emailInput.value, question : "SE:\n" + contentInput.value
+							}
+						);
 
-				if (error) {
-					setError("An error occurred. Please try again later.")
+					if (error) {
+						setError("An error occurred. Please try again later.")
+					}
+
+					setError("")
+					setSuccess(true)
+
+					setTimeout(handleOpen, 3000)
+				} else {
+					setError("DB412: Failed Database Precondition!")
 				}
-
-				setError("")
-				setSuccess(true)
-
-				setTimeout(handleOpen, 3000)
 			} catch (error) {
 				setError("An error occurred. Please try again later.")
 			}
