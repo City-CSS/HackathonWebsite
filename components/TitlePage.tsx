@@ -7,7 +7,7 @@ import {CalendarFill, GeoAltFill} from "react-bootstrap-icons"
 
 const TitlePage = () => {
 	return (
-		<div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+		<div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex min-h-screen lg:items-center">
 			<div className="mx-auto max-w-3xl text-center">
 				<div className="grid sm:grid-cols-2 gap-6 mb-32 lg:text-xl font-bold">
 					<div className="inline-flex items-center justify-center">
@@ -21,7 +21,7 @@ const TitlePage = () => {
 					</Link>
 				</div>
 
-				<h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text  font-extrabold text-transparent text-7xl lg:text-9xl">
+				<h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text font-extrabold text-transparent text-7xl lg:text-9xl">
 					Citython<br/>2024
 				</h1>
 
