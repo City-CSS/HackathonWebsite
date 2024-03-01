@@ -78,7 +78,7 @@ export default function Question() {
 	return (
 		<div>
 			<div className="flex justify-center items-center pt-8 pb-12">
-				<Button onClick={handleOpen} size="lg" className=" bg-accent-500 hover:bg-accent-600 text-text-950 focus:outline-red-700 text-lg py-2 px-4">
+				<Button onClick={handleOpen} size="lg" className=" bg-accent-500 hover:bg-accent-600 text-text-950 focus:outline-red-700 text-base lg:text-lg py-2 px-4">
 					My question isn&apos;t listed!
 				</Button>
 			</div>

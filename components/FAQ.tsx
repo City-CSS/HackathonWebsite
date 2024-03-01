@@ -71,19 +71,19 @@ export default function FAQ() {
 
 	return (
 		<div className="pt-6 sm:pt-12">
-			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 pb-12 px-12 ">Frequently Asked Questions</h2>
-			<div className="mx-auto max-w-7xl px-4 lg:px-0">
+			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 p-12">Frequently Asked Questions</h2>
+			<div className="mx-auto lg:max-w-6xl px-4 ld:px-8">
 				{/*TODO: Implement skip FAQ for keyboard only users*/}
 				{FAQ_DATA.map((faq, index) => (
 					<Accordion key={index} open={open === index + 1} className={`mb-2 sm:mb-4 rounded-lg px-4 ${open === index + 1 ? "bg-background-100": "bg-background-50"}`} animate={CUSTOM_ANIMATION}>
 						<AccordionHeader
 							onClick={() => handleOpen(index + 1)}
-							className={`text-xl font-bold focus:outline-red-700 ${open === index + 1 ? "pb-1 pt-2 text-primary-600 hover:text-primary-500 focus:text-primary-500" : "py-2 text-primary-900 hover:text-primary-700 focus:text-primary-700"
+							className={`text-base lg:text-xl font-bold focus:outline-red-700 ${open === index + 1 ? "pb-1 pt-2 text-primary-600 hover:text-primary-500 focus:text-primary-500" : "py-2 text-primary-900 hover:text-primary-700 focus:text-primary-700"
 							}`}
 						>
 							{faq.question}
 						</AccordionHeader>
-						<AccordionBody className="pt-1 pb-2 text-lg">
+						<AccordionBody className="pt-1 pb-2 text-sm lg:text-lg">
 							{faq.answer}
 						</AccordionBody>
 					</Accordion>

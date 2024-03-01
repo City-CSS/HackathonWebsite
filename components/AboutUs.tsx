@@ -15,7 +15,7 @@ export default function AboutUs() {
 					<Image src="/CSSLogo.svg" alt="CSS Logo" fill={true} className="mx-auto"/>
 				</Link>
 			</div>
-			<div className="mx-auto sm:text-lg text-center max-w-xl px-8 lg:px-0">
+			<div className="mx-auto text-sm md:text-base lg:text-lg text-center max-w-xl px-8 lg:px-0">
 				<p className="pt-8 sm:pt-12">
 					The City University of London Computer Science Society is a vibrant community of students passionate about all things tech. We believe in the power of technology to inspire, innovate, and drive positive change. Whether you&apos;re a seasoned programmer, a curious beginner, or simply interested in the world of computing, there&apos;s a place for you in our society.
 				</p>
