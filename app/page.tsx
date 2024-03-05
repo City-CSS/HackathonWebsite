@@ -1,26 +1,35 @@
 "use client"
 
 import React from "react";
-import AboutUs from "@/components/AboutUs"
+import AboutUs from "@/components/home/AboutUs"
 // import Team from "@/components/Team"
-import Footer from "@/components/Footer";
-import TitlePage from "@/components/TitlePage";
-import WhyAttend from "@/components/WhyAttend";
-import Sponsors from "@/components/Sponsors";
+import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
+import WhyAttend from "@/components/home/WhyAttend";
+import Sponsors from "@/components/home/Sponsors";
 // import Timetable from "@/components/Timetable";
-import FAQ from "@/components/FAQ";
+import FAQ from "@/components/home/FAQ";
+import Timetable from "@/components/Timetable";
+import Team from "@/components/Team";
+import Stats from "@/components/home/old/Stats";
+import CenteringGrid from "@/components/CenteringGrid";
+import {Info} from "@/components/InfoMessages";
+import Question from "@/components/Question";
 
 
 export default function Home() {
 	return (
 		<div className="min-h-screen flex flex-col bg-background-950 text-text-50 select-none">
 			<main className="flex-grow pattern">
-				<TitlePage/>
+				<Hero/>
 				<Sponsors/>
 				<AboutUs/>
+				<hr className="m-10"/>
 				<WhyAttend/>
 				{/*<Timetable/>*/}
 				{/*<Team/>*/}
+				{/*<Stats/>*/}
+				{/*<Question/>*/}
 				<FAQ/>
 				<Footer/>
 			</main>

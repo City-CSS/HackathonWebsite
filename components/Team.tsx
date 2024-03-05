@@ -120,7 +120,7 @@ export default function Team() {
 					<div className="flex transition-transform duration-500 ease-in-out" ref={carouselRef}>
 						{team.map((member, index) => (
 							<div key={index} className="flex-shrink-0 w-64 px-4">
-								<Image src={member.avatar.src} alt={member.name} width={member.avatar.width} height={member.avatar.height} className="rounded-lg shadow-md" />
+								<img src={member.avatar.src} alt={member.name} width={member.avatar.width} height={member.avatar.height} className="rounded-lg shadow-md" />
 								<h2 className="mt-6 text-xl leading-7 font-semibold text-gray-900">{member.name}</h2>
 								<p className="mt-2 text-base leading-6 text-gray-500">{member.title}</p>
 							</div>
