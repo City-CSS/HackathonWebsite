@@ -31,7 +31,7 @@ export default function Waitlist() {
 				if (insSupabase != null) {
 					const {error} = await (insSupabase as SupabaseClient)
 						.from("Waitlist")
-						.insert({email})
+						.insert({email: email.toLowerCase()})
 						.single()
 
 					if (error && error.code === "23505") {
