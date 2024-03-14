@@ -2,19 +2,14 @@
 
 import React from "react";
 import AboutUs from "@/components/home/AboutUs"
-// import Team from "@/components/Team"
+import Team from "@/components/home/Team";
 import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
 import WhyAttend from "@/components/home/WhyAttend";
 import Sponsors from "@/components/home/Sponsors";
-// import Timetable from "@/components/Timetable";
 import FAQ from "@/components/home/FAQ";
-import Timetable from "@/components/Timetable";
-import Team from "@/components/Team";
+import Timetable from "@/components/home/Timetable";
 import Stats from "@/components/home/old/Stats";
-import CenteringGrid from "@/components/CenteringGrid";
-import {Info} from "@/components/InfoMessages";
-import Question from "@/components/Question";
 
 
 export default function Home() {
@@ -27,9 +22,8 @@ export default function Home() {
 				<hr className="m-10"/>
 				<WhyAttend/>
 				{/*<Timetable/>*/}
-				{/*<Team/>*/}
+				<Team/>
 				{/*<Stats/>*/}
-				{/*<Question/>*/}
 				<FAQ/>
 				<Footer/>
 			</main>
