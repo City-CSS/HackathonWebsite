@@ -169,9 +169,7 @@ const Team = () => {
 
 					<Slider {...settings} ref={sliderRef}>
 						{members.map((member, index) => (
-							// TODO: Fix production error
-							// !171:8  Error: Missing "key" prop for element in iterator  react/jsx-key
-							<div className="mb-6 lg:mb-0 px-6">
+							<div className="mb-6 lg:mb-0 px-6" key={index}>
 								<div className="block rounded-2xl bg-background-700">
 									<div className="relative overflow-hidden bg-cover bg-no-repeat">
 										<Image src={member.avatar.src} alt={member.avatar.alt} width={member.avatar.width} height={member.avatar.height} className="w-full rounded-t-2xl"/>
@@ -187,7 +185,7 @@ const Team = () => {
 										<div className="mx-auto text-secondary-300 flex list-inside justify-center">
 											{Object.entries(member.socials).map(([social, link], index) => {
 												return (
-													<Link href={link} className="px-2" key={social}>
+													<Link href={link} className="px-2" key={index}>
 														{socialIcons[social]}
 													</Link>
 												);
