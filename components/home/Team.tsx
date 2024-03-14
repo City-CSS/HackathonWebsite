@@ -169,6 +169,8 @@ const Team = () => {
 
 					<Slider {...settings} ref={sliderRef}>
 						{members.map((member, index) => (
+							// TODO: Fix production error
+							// !171:8  Error: Missing "key" prop for element in iterator  react/jsx-key
 							<div className="mb-6 lg:mb-0 px-6">
 								<div className="block rounded-2xl bg-background-700">
 									<div className="relative overflow-hidden bg-cover bg-no-repeat">
