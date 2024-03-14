@@ -168,7 +168,7 @@ const Team = () => {
 					<h2 className="mx-auto text-3xl sm:text-4xl font-bold tracking-tight text-center pt-8 pb-12 px-12 max-w-2xl">Our Team</h2>
 
 					<Slider {...settings} ref={sliderRef}>
-						{members.map((member, _) => (
+						{members.map((member, index) => (
 							<div className="mb-6 lg:mb-0 px-6">
 								<div className="block rounded-2xl bg-background-700">
 									<div className="relative overflow-hidden bg-cover bg-no-repeat">
@@ -183,7 +183,7 @@ const Team = () => {
 										<h5 className="text-lg text-white font-bold">{member.name}</h5>
 										<p className="-mt-1 mb-4">{member.title}</p>
 										<div className="mx-auto text-secondary-300 flex list-inside justify-center">
-											{Object.entries(member.socials).map(([social, link], _) => {
+											{Object.entries(member.socials).map(([social, link], index) => {
 												return (
 													<Link href={link} className="px-2" key={social}>
 														{socialIcons[social]}
