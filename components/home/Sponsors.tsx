@@ -45,8 +45,8 @@ export default function Sponsors() {
 						.from('Sponsors')
 						.select('name, url, tier, logo_uri');
 
-					console.log(error)
 					if (error) {
+						console.log("Sponsor load error: " + error)
 						setError("Unable to load sponsors! Please try again later.")
 					}
 
