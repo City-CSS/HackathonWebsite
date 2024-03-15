@@ -6,7 +6,6 @@ import {Error} from "@/components/InfoMessages"
 import Image from "next/image"
 import Link from "next/link"
 import React, {useEffect, useState} from "react"
-import {SupabaseClient} from "@supabase/supabase-js";
 
 
 export default function Sponsors() {
@@ -42,7 +41,7 @@ export default function Sponsors() {
 			try {
 				const insSupabase = supabase()
 				if (insSupabase != null) {
-					const {data: sponsors, error} = await (insSupabase as SupabaseClient)
+					const {data: sponsors, error} = await insSupabase
 						.from('Sponsors')
 						.select('name, url, tier, logo_uri');
 
