@@ -29,11 +29,11 @@ const FAQ_DATA = [
 	},
 	{
 		question: "How do I register for the hackathon?",
-		answer: "Use the \"Get Tickets\" button throughout our website."
+		answer: "Use the \"Get Tickets\" button at the top of the website."
 	},
 	{
-		question: "Can I participate alone or do I need a team?",
-		answer: "You can do either! You can join solo and find a team during the event, or you can register as a pre-formed team by inputting the same team name."
+		question: "Can I register alone or do I need a team?",
+		answer: "You can join solo and find a team during the event, or you can register as a pre-formed team by inputting the same team name during registration."
 	},
 	{
 		question: "What should I bring to the hackathon?",
@@ -41,7 +41,15 @@ const FAQ_DATA = [
 	},
 	{
 		question: "How long does the hackathon last?",
-		answer: "The hacking period is 24 hours. You will be able to sleep on campus, so don't worry!. The total duration of the event will be about 30 hours."
+		answer: "Unfortunately, the University has not given us permission to do this event overnight. Therefore the Hackathon is two days on a weekend, from 10 - 21."
+	},
+	{
+		question: "Can I program overnight?",
+		answer: "Yes! Despite the event being from 10 - 21, you can continue working on your project overnight if you wish."
+	},
+	{
+		question: "Who owns the project?",
+		answer: "The copyright of the project belongs to the team. The event has no rights over any of the projects."
 	},
 	{
 		question: "What kind of projects are allowed?",
@@ -53,11 +61,11 @@ const FAQ_DATA = [
 	},
 	{
 		question: "Are there any limits for team size?",
-		answer: "Yes! The official maximum team size is 4. There is no minimum team size. You can have a bigger team, however, if you win any prizes, there will only be prizes available for 4 members. We recommend breaking down into smaller teams."
+		answer: "Yes! The official maximum team size is 4. Lower team sizes are allowed, if desired. If you have a large group of friends, we recommend breaking down into smaller teams."
 	},
 	{
 		question: "Are there any prizes?",
-		answer: "Yes! Prizes are awarded for the top 3 teams. Our sponsors may also give other prizes and awards."
+		answer: "Yes! Prizes are awarded for the top 3 teams. Our sponsors may also give other prizes and awards!"
 	},
 	{
 		question: "Can I attend if I'm not a coding expert?",
