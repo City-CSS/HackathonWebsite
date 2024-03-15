@@ -2,7 +2,6 @@ import supabase from "@/app/api/supabaseClient"
 import {Error} from "@/components/InfoMessages"
 import React from "react"
 import {Button, Input, Spinner} from "@material-tailwind/react"
-import {SupabaseClient} from "@supabase/supabase-js";
 
 
 export default function Waitlist() {
@@ -29,7 +28,7 @@ export default function Waitlist() {
 				const insSupabase = supabase()
 
 				if (insSupabase != null) {
-					const {error} = await (insSupabase as SupabaseClient)
+					const {error} = await insSupabase
 						.from("Waitlist")
 						.insert({email: email.toLowerCase()})
 						.single()
