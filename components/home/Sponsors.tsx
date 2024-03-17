@@ -70,8 +70,8 @@ export default function Sponsors() {
 	}, []);
 
 	return (
-		<div className="mx-auto bg-background-50 text-text-950 py-24 sm:py-32 px-4 lg:px-12 max-w-full">
-			<h2 className={`mx-auto text-3xl sm:text-4xl font-bold tracking-tight text-center px-12 max-w-2xl ${sponsors.length > 0? "pb-12" : ""}`}>Our Sponsors</h2>
+		<div className="highlight-section">
+			<h2 className={`${sponsors.length > 0? "pb-12" : ""}`}>Our Sponsors</h2>
 
 			<div className="mx-auto max-w-2xl lg:max-w-4xl px-6">
 				{error !== "" ? (

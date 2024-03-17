@@ -19,7 +19,7 @@ export default function Home() {
 				<Hero/>
 				<Sponsors/>
 				<AboutUs/>
-				<hr className="m-10"/>
+				<hr className="mx-auto w-3/5 sm:w-2/5"/>
 				<WhyAttend/>
 				{/*<Timetable/>*/}
 				<Team/>

@@ -1,6 +1,6 @@
 import supabase from "@/app/api/supabaseClient"
+import FallbackImage from "@/components/FallbackImage"
 import Link from "next/link"
-import Image from "next/image"
 import React, {ReactElement, useRef} from "react"
 import {Discord, EnvelopeFill, Github, Globe, Instagram, Linkedin, Tiktok, Twitter} from "react-bootstrap-icons"
 import Slider from 'react-slick';
@@ -37,34 +37,23 @@ const Team = () => {
 					if (error) {
 						console.error("Error fetching team members: " + error);
 					} else {
-						let membersWithAvatars: any[];
+						let membersWithAvatars: Member[];
 
 						membersWithAvatars = await Promise.all(data.map(async(member) => {
-							const {data : avatarData, error : avatarError} = await insSupabase
-								.storage.from("TeamMembers")
-								.download(`${member.id}`);
+							const avatarURL = insSupabase
+								.storage
+								.from("TeamMembers")
+								.getPublicUrl(`${member.id}`)
+								.data;
 
-							if (avatarError) {
-								return {
-									...member, avatar : {
-										src : '/CSSLogo.svg', alt : "Placeholder avatar", width : 480, height : 560,
-									},
-								};
-							} else {
-								const arrayBuffer = await avatarData.arrayBuffer();
-								const base64Avatar = btoa(
-									String.fromCharCode(...new Uint8Array(arrayBuffer))
-								);
-
-								return {
-									...member, avatar : {
-										src : `data:image/jpeg;base64,${base64Avatar}`,
-										alt : `${member.name}'s avatar`,
-										width : 480,
-										height : 560,
-									},
-								};
-							}
+							return {
+								...member, avatar : {
+									src : avatarURL.publicUrl,
+									alt : `${member.name}'s avatar`,
+									width : 512,
+									height : 512,
+								},
+							};
 						}));
 
 						setMembers(membersWithAvatars);
@@ -80,17 +69,6 @@ const Team = () => {
 
 
 	const sliderRef = useRef<Slider>(null); // Reference for slider control
-
-	interface SocialLinks {
-		instagram?: string;
-		twitter?: string;
-		linkedin?: string;
-		github?: string;
-		tiktok?: string;
-		discord?: string;
-		email?: string;
-		website?: string;
-	}
 
 	interface SocialIcons {
 		[key: string]: ReactElement;
@@ -108,31 +86,27 @@ const Team = () => {
 	};
 
 	const slidesToShow = 3;
+	// TODO: Investigate this sometimes not working
 	const settings = {
 		dots: false,
-		infinite: true,
-		slidesToShow: Math.min(slidesToShow, members.length),
-		slidesToScroll: 1,
-		autoplay: members.length > slidesToShow,
-		autoplaySpeed: 2500,
 		arrows: false,
 		draggable: false,
+		className: "center",
+		centerMode: true,
+		infinite: true,
+		centerPadding: "0",
+		autoplay: members.length > slidesToShow,
+		pauseOnHover: true,
+		pauseOnFocus: true,
+		slidesToShow: Math.min(slidesToShow, members.length),
+		speed: 1250,
+		cssEase: "linear",
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
 					slidesToShow: Math.min(2, members.length),
-					autoplay: members.length > 2,
-					autoplaySpeed: 2000
-				}
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: Math.min(1, members.length),
-					autoplay: members.length > 1,
-					autoplaySpeed: 1500
-				}
+				},
 			}
 		]
 	};
@@ -145,68 +119,260 @@ const Team = () => {
 		"M0,64L26.7,106.7C53.3,149,107,235,160,245.3C213.3,256,267,192,320,165.3C373.3,139,427,149,480,154.7C533.3,160,587,160,640,144C693.3,128,747,96,800,80C853.3,64,907,64,960,85.3C1013.3,107,1067,149,1120,160C1173.3,171,1227,149,1280,165.3C1333.3,181,1387,235,1413,261.3L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z",
 	];
 
-	return (
-		<div className="pt-12 sm:pt-16">
-			<div className="mx-auto bg-secondary-50 text-text-950 py-24 sm:py-32 px-4 lg:px-12 max-w-full">
-				{/*TODO: Address issue with scaling for lower quantity of members*/}
-				<div className="container mx-auto px-4">
-					<h2 className="mx-auto text-3xl sm:text-4xl font-bold tracking-tight text-center pt-8 pb-12 px-12 max-w-2xl">Our Team</h2>
+	function customLoader({ src } : { src: string }) {
+		return src;
+	}
 
-					<Slider {...settings} ref={sliderRef}>
-						{members.map((member, index) => {
-							return (
-								<div className="mb-6 lg:mb-0 px-6" key={index}>
-									<div className="block rounded-2xl bg-background-700">
-										<div className="relative overflow-hidden bg-cover bg-no-repeat">
-											<Image
-												src={member.avatar.src}
-												alt={member.avatar.alt}
-												width={member.avatar.width}
-												height={member.avatar.height}
-												className="w-full rounded-t-2xl"
-											/>
-											<svg
-												className="absolute text-background-800 left-0 bottom-0"
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 1440 320"
-											>
-												<path fill="currentColor" d={paths[index % paths.length]} />
-											</svg>
-										</div>
-										<div className="text-center rounded-b-2xl bg-background-800 text-text-50 p-6">
-											<h5 className="text-lg text-white font-bold">{member.name}</h5>
-											<p className="-mt-1 mb-4">{member.role}</p>
-											<div className="mx-auto text-secondary-300 flex list-inside justify-center">
-												{Object.entries(member.socials)
-												       .sort((a, b) => a[1].position - b[1].position)
-												       .map(([social, { data }], index) => {
-													       return (
-														       <Link href={data} className="px-2" key={index}>
-															       {socialIcons[social]}
-														       </Link>
-													       );
-												       })}
-											</div>
+	return (
+		<div className="highlight-section">
+			{/*TODO: Address issue with scaling for lower quantity of members*/}
+			<div className="container mx-auto px-4">
+				<h2>Our Team</h2>
+
+				<Slider {...settings} ref={sliderRef}>
+					{members.map((member, index) => {
+						return (
+							<div className="mb-6 lg:mb-0 px-6" key={index}>
+								<div className="block rounded-2xl bg-background-700">
+									<div className="relative overflow-hidden bg-cover bg-no-repeat">
+										<FallbackImage
+											src={member.avatar.src}
+											fallbackSrc="PersonLoadError.svg"
+											alt={member.avatar.alt}
+											loader={customLoader}
+											width={member.avatar.width}
+											height={member.avatar.height}
+											unoptimized
+											className="w-full rounded-t-2xl"
+											style={{ aspectRatio: "1/1", objectFit: "cover" }}
+										/>
+										<svg
+											className="absolute text-background-800 left-0 bottom-0"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 1440 320"
+										>
+											<path fill="currentColor" d={paths[index % paths.length]} />
+										</svg>
+									</div>
+									<div className="text-center rounded-b-2xl bg-background-800 text-text-50 p-6">
+										<h5 className="text-lg text-white font-bold">{member.name}</h5>
+										<p className="default-ignored -mt-1 mb-4">{member.role}</p>
+										<div className="mx-auto text-secondary-300 flex list-inside justify-center min-h-[1em]">
+											{Object.entries(member.socials)
+											       .sort((a, b) => a[1].position - b[1].position)
+											       .map(([social, { data }], index) => {
+												       return (
+													       <Link href={data} className="px-2" key={index}>
+														       {socialIcons[social]}
+													       </Link>
+												       );
+											       })}
 										</div>
 									</div>
 								</div>
-							);
-						})}
-					</Slider>
-				</div>
+							</div>
+						);
+					})}
+				</Slider>
+			</div>
 		</div>
-	</div>
 	);
 };
 
-// 	<path
-// 	      d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-// 	</path>
-// 	<path
-// 	      d="M0,96L48,128C96,160,192,224,288,240C384,256,480,224,576,213.3C672,203,768,213,864,202.7C960,192,1056,160,1152,128C1248,96,1344,64,1392,48L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-// 	</path>
-// 	<path
-// 	      d="M0,288L48,256C96,224,192,160,288,160C384,160,480,224,576,213.3C672,203,768,117,864,85.3C960,53,1056,75,1152,69.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-// 	</path>
-
 export default Team;
+
+//! TODO: Report this issue to react-slick
+//! Warning: `Infinity` is an invalid value for the `width` css style property.
+// 	div
+// Track@webpack-internal:///(app-pages-browser)/./node_modules/react-slick/lib/track.js:320:24
+// div
+// div
+// InnerSlider@webpack-internal:///(app-pages-browser)/./node_modules/react-slick/lib/inner-slider.js:197:24
+// Slider@webpack-internal:///(app-pages-browser)/./node_modules/react-slick/lib/slider.js:167:24
+// div
+// div
+// Team@webpack-internal:///(app-pages-browser)/./components/home/Team.tsx:31:80
+// main
+// div
+// Home
+// StaticGenerationSearchParamsBailoutProvider@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js:16:64
+// InnerLayoutRouter@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:243:18
+// RedirectErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:73:9
+// RedirectBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:81:24
+// NotFoundErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9
+// NotFoundBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:62
+// LoadingBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:335:76
+// ErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:161:67
+// InnerScrollAndFocusHandler@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:152:9
+// ScrollAndFocusHandler@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:227:37
+// RenderFromTemplateContext@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js:16:44
+// OuterLayoutRouter@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:354:209
+// body
+// html
+// RedirectErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:73:9
+// RedirectBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:81:24
+// NotFoundErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9
+// NotFoundBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:62
+// DevRootNotFoundBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:24
+// ReactDevOverlay@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/internal/ReactDevOverlay.js:84:9
+// HotReload@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/hot-reloader-client.js:307:37
+// Router@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:181:114
+// ErrorBoundaryHandler@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:114:9
+// ErrorBoundary@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:161:67
+// AppRouter@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:536:47
+// ServerRoot@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:129:24
+// RSCComponent
+// Root@webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:145:24 app-index.js:33:21
+// error app-index.js:33
+// error hydration-error-info.js:45
+// printWarning react-dom.development.js:94
+// error react-dom.development.js:68
+// warnStyleValueIsInfinity react-dom.development.js:4578
+// warnValidStyle react-dom.development.js:4596
+// setValueForStyle react-dom.development.js:4670
+// setValueForStyles react-dom.development.js:4746
+// setProp react-dom.development.js:32733
+// updateProperties react-dom.development.js:34078
+// commitUpdate react-dom.development.js:35485
+// commitMutationEffectsOnFiber react-dom.development.js:22569
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22527
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22422
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22383
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22810
+// recursivelyTraverseMutationEffects react-dom.development.js:22361
+// commitMutationEffectsOnFiber react-dom.development.js:22615
+// commitMutationEffects react-dom.development.js:22331
+// commitRootImpl react-dom.development.js:26091
+// commitRoot react-dom.development.js:25957
+// performSyncWorkOnRoot react-dom.development.js:24815
+// flushSyncWorkAcrossRoots_impl react-dom.development.js:10286
+// flushSyncWorkOnAllRoots react-dom.development.js:10246
+// commitRootImpl react-dom.development.js:26244
+// commitRoot react-dom.development.js:25957
+// commitRootWhenReady react-dom.development.js:24677
+// finishConcurrentRender react-dom.development.js:24642
+// performConcurrentWorkOnRoot react-dom.development.js:24487
+// workLoop scheduler.development.js:256
+// flushWork scheduler.development.js:225
+// performWorkUntilDeadline scheduler.development.js:534
+// (Async: EventHandlerNonNull)
+// <anonymous> scheduler.development.js:569
+// <anonymous> scheduler.development.js:630
+// NextJS 4
+// <anonymous> index.js:6
+// NextJS 4
+// <anonymous> react-dom.development.js:27
+// <anonymous> react-dom.development.js:38423
+// NextJS 4
+// <anonymous> index.js:37
+// NextJS 4
+// <anonymous> client.js:3
+// NextJS 4
+// <anonymous> app-index.js:15
+// NextJS 4
+// <anonymous> app-next-dev.js:9
+// appBootstrap app-bootstrap.js:57
+// loadScriptsInSequence app-bootstrap.js:23
+// appBootstrap app-bootstrap.js:56
+// <anonymous> app-next-dev.js:8
+// NextJS 7
