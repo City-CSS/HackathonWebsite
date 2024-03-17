@@ -53,11 +53,11 @@ export default function Waitlist() {
 
 	return (
 		<div className="mt-16">
-			<h2 className="lg:text-lg text-accent-200 mx-4 lg:mx-16">
+			<p className="mx-4 lg:mx-12">
 				<span className="font-bold text-accent-400">Ticket sales have not started yet.</span>
 				<br/>
-				<span className="text-sm lg:text-base leading-tight line-clamp-none">Sign up for our waitlist to receive notifications when they become available!</span>
-			</h2>
+				<span className="text-accent-200 leading-tight line-clamp-none">Sign up for our waitlist to receive notifications when they become available!</span>
+			</p>
 			<div className="mt-4 flex flex-wrap justify-center">
 				{error && <Error className="mb-6" message={error}/>}
 				<div className="relative flex w-full max-w-[24rem]">

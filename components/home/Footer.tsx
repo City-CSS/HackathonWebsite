@@ -6,13 +6,10 @@ export default function Footer() {
 	return (
 		<footer className="bg-primary-900 text-white body-font bottom-0">
 			<div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-				<span className="text-primary-200 font-medium items-center ml-3 text-xl">Citython</span>
+				<h2 className="default-ignored text-primary-200 font-medium items-center ml-3 text-xl">Citython</h2>
 
-				<p className="text-sm sm:ml-4 sm:pl-4 sm:py-2 sm:mt-0 mt-4">© 2024 CSS @ CUoL</p>
-
-				<p className={"text-sm sm:ml-4 sm:pl-4 sm:py-2 sm:mt-0 mt-4"}>
-					<Link href="/policy.pdf" draggable="false" className="select-none">Privacy Policy</Link>
-				</p>
+				<p>© 2024 CSS @ CUoL</p>
+				<p><Link href="/policy.pdf" draggable="false" className="select-none">Privacy Policy</Link></p>
 
 				<span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
 						<Link href="https://www.instagram.com/citython24/" className="px-1" draggable="false"><Instagram/></Link>

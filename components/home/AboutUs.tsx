@@ -5,9 +5,9 @@ import Link from "next/link"
 
 export default function AboutUs() {
 	return (
-		<div className="pt-6 sm:pt-12">
-			<h2 className="mx-12 bg-gradient-to-r from-lime-300 via-red-500 to-purple-500 bg-clip-text text-3xl sm:text-4xl font-bold text-transparent leading-tight text-center pb-5">
-				<span className="text-xl sm:text-2xl lg:3xl text-text-50">Brought to you by...</span><br/>
+		<div className="normal-section">
+			<h2 className="default-ignored mx-12 bg-gradient-to-r from-lime-300 via-red-500 to-purple-500 bg-clip-text text-2xl md:text-3xl lg:text-4xl font-bold text-transparent leading-tight text-center pb-5">
+				<span className="text-base sm:text-xl lg:text-2xl text-text-50">Brought to you by...</span><br/>
 				Computer Science Society
 			</h2>
 			<div className="mx-auto relative w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40">
@@ -15,7 +15,7 @@ export default function AboutUs() {
 					<Image src="/CSSLogo.svg" alt="CSS Logo" fill={true} className="mx-auto"/>
 				</Link>
 			</div>
-			<div className="mx-auto text-sm md:text-base lg:text-lg text-center max-w-xl px-8 lg:px-0">
+			<div className="mx-auto max-w-xl px-8 lg:px-0">
 				<p className="pt-8 sm:pt-12">
 					The City University of London Computer Science Society is a vibrant community of students passionate about all things tech. We believe in the power of technology to inspire, innovate, and drive positive change. Whether you&apos;re a seasoned programmer, a curious beginner, or simply interested in the world of computing, there&apos;s a place for you in our society.
 				</p>

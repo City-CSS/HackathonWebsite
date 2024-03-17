@@ -78,8 +78,8 @@ export default function FAQ() {
 	const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
 	return (
-		<div className="pt-6 sm:pt-12">
-			<h2 className="mx-auto text-3xl sm:text-4xl font-bold text-white tracking-tight text-center pt-8 p-12">Frequently Asked Questions</h2>
+		<div className="normal-section">
+			<h2>Frequently Asked Questions</h2>
 			<div className="mx-auto lg:max-w-6xl px-4 ld:px-8">
 				{/*TODO: Implement skip FAQ for keyboard only users*/}
 				{FAQ_DATA.map((faq, index) => (

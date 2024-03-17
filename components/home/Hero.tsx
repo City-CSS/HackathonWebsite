@@ -25,7 +25,7 @@ const Hero = () => {
 					Citython<br/>2024
 				</h1>
 
-				<h2 className="mx-auto text-text-50 mt-1 sm:mt-4 max-w-xl sm:text-xl">
+				<h2 className="default-ignored mx-auto text-text-50 mt-1 sm:mt-4 max-w-xl sm:text-xl">
 					City University&apos;s annual hackathon is back!
 				</h2>
 
